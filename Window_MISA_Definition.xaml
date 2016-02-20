@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:PrimerPipeline.Controls" 
+        x:Class="PrimerPipeline.Window_MISA_Definition"
+        Icon="/PrimerPipeline;component/Images/runtime_window_icon.ico"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        SizeToContent="WidthAndHeight"
+        SnapsToDevicePixels="True"
+        Title="Add MISA definition"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Header="Definition" Margin="12,12,12,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Margin="6,6,3,3"><Run Text="Unit size:"/></TextBlock>
+                <Controls:NumericTextBox Grid.Column="1" Grid.Row="0" Margin="3,6,6,3" Width="50" x:Name="unitSize_NumericTextBox" 
+                                         NumericValue="1" MinValueAllowed="1"/>
+                
+                <TextBlock Grid.Column="0" Grid.Row="1" Margin="6,3,3,6"><Run Text="Minimum repeats:"/></TextBlock>
+                <Controls:NumericTextBox Grid.Column="1" Grid.Row="1" Margin="3,3,6,6" Width="50" x:Name="minRepeats_NumericTextBox" 
+                                         NumericValue="1" MinValueAllowed="1"/>
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Column="0" Grid.Row="1" Margin="12,3,3,12" Width="75" HorizontalAlignment="Right" Click="OK_Button_Click" Content="OK"/>
+        <Button Grid.Column="1" Grid.Row="1" Margin="3,3,12,12" IsCancel="True" Width="75" Content="Cancel"/>
+    </Grid>
+</Window>

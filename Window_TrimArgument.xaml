@@ -1,0 +1,114 @@
+﻿<Window x:Class="PrimerPipeline.Window_TrimArgument"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:controls="clr-namespace:PrimerPipeline.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="/PrimerPipeline;component/Images/runtime_window_icon.ico"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        SizeToContent="WidthAndHeight"
+        SnapsToDevicePixels="True"
+        Title="Add argument"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Header="Argument" Margin="12,12,12,3">
+            <StackPanel>
+                <RadioButton Margin="6,6,6,3" IsChecked="True" Name="ambiguousBases_RadioButton">
+                    <Grid IsEnabled="{Binding ElementName=ambiguousBases_RadioButton, Path=IsChecked}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,3">Remove distal stretches containing ambiguous bases</TextBlock>
+
+                        <Label Grid.Column="0" Grid.Row="1" Margin="0,3,3,3">Bases:</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="1" Margin="3,3,0,3" x:Name="ambiguous_N_NumericTextBox">2</controls:NumericTextBox>
+
+                        <Label Grid.Column="0" Grid.Row="2" Margin="0,3,3,0">Window size (bp):</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="200" Margin="3,3,0,0" x:Name="ambiguous_WindowSize_NumericTextBox">200</controls:NumericTextBox>
+                    </Grid>
+                </RadioButton>
+
+                <RadioButton Margin="6,3,6,3" Name="stretchesOfType_RadioButton">
+                    <Grid IsEnabled="{Binding ElementName=stretchesOfType_RadioButton, Path=IsChecked}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,3">Remove stretches of type</TextBlock>
+
+                        <Label Grid.Column="0" Grid.Row="1" Margin="0,3,3,3">End:</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="1" Margin="3,3,0,3" Name="stretchesOfType_End_ComboBox"
+                                  SelectedIndex="0">
+                            <ComboBoxItem>3'</ComboBoxItem>
+                            <ComboBoxItem>5'</ComboBoxItem>
+                        </ComboBox>
+                        
+                        <Label Grid.Column="0" Grid.Row="2" Margin="0,3,3,3">Type:</Label>
+                        <ComboBox Grid.Column="1" Grid.Row="2" Margin="3,3,0,3" Name="stretchesOfType_Type_ComboBox"
+                                  SelectedIndex="0">
+                            <ComboBoxItem>A</ComboBoxItem>
+                            <ComboBoxItem>C</ComboBoxItem>
+                            <ComboBoxItem>G</ComboBoxItem>
+                            <ComboBoxItem>T</ComboBoxItem>
+                        </ComboBox>
+
+                        <Label Grid.Column="0" Grid.Row="3" Margin="0,3,3,3">Bases:</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="3" Margin="3,3,0,3" x:Name="stretchesOfType_Minimum_NumericTextBox">5</controls:NumericTextBox>
+
+                        <Label Grid.Column="0" Grid.Row="4" Margin="0,3,3,0">Window size:</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="4" Margin="3,3,0,0" x:Name="stretchesOfType_WindowSize_NumericTextBox">200</controls:NumericTextBox>
+                    </Grid>
+                </RadioButton>
+                
+                <RadioButton Margin="6,3,6,6" Name="cutOff_RadioButton">
+                    <Grid IsEnabled="{Binding ElementName=cutOff_RadioButton, Path=IsChecked}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,3">Cut-off</TextBlock>
+
+                        <Label Grid.Column="0" Grid.Row="1" Margin="0,3,3,3">Minimum value:</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="1" Margin="3,3,0,3" x:Name="cutOff_MinValue_NumericTextBox">500</controls:NumericTextBox>
+
+                        <Label Grid.Column="0" Grid.Row="2" Margin="0,3,3,0">Sequence size:</Label>
+                        <controls:NumericTextBox Grid.Column="1" Grid.Row="2" Margin="3,3,0,0" x:Name="cutOff_SequenceSize_NumericTextBox">50700</controls:NumericTextBox>
+                    </Grid>
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>
+
+        <Button Grid.Column="0" Grid.Row="1" Margin="12,3,3,12" Width="75" HorizontalAlignment="Right" Click="OK_Button_Click">OK</Button>
+        <Button Grid.Column="1" Grid.Row="1" Margin="3,3,12,12" IsCancel="True" Width="75">Cancel</Button>
+    </Grid>
+</Window>
